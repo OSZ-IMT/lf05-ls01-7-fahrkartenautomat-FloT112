@@ -6,34 +6,37 @@ import java.util.Scanner;
  * @author Hafezi
  */
 class Fahrkartenautomat {
+
     public static void main(String[] args) {
         Scanner tastatur = new Scanner(System.in);
         // Achtung!!!!
         // Hier wird deutlich, warum double nicht für Geldbeträge geeignet ist.
         // =======================================
-        double zuZahlenderBetrag;
-        double eingezahlterGesamtbetrag;
-        double eingeworfeneMuenze;
-        double rueckgabebetrag;
+        float zuZahlenderBetrag = 0;
+        float eingezahlterGesamtbetrag;
+        float eingeworfeneMuenze;
+        float rueckgabebetrag;
+        float eingegebenerBetrag;
         // Die Eingabe erfolgt anwenderfreudlich mit Dezimalpunkt: just testing
-        double eingegebenerBetrag;
 
-        // Den zu zahlenden Betrag ermittelt normalerweise der Automat
+
+                // Den zu zahlenden Betrag ermittelt normalerweise der Automat
         // aufgrund der gewählten Fahrkarte(n).
         // -----------------------------------
+
         System.out.print("Zu zahlender Betrag (Euro): ");
-        zuZahlenderBetrag = tastatur.nextDouble();
+        zuZahlenderBetrag = tastatur.nextFloat();
 
         // Geldeinwurf
         // -----------
-        eingezahlterGesamtbetrag = 0.0;
+        eingezahlterGesamtbetrag = (float) 0.00;
         while (eingezahlterGesamtbetrag < zuZahlenderBetrag) {
-            System.out.println("Noch zu zahlen: " + (zuZahlenderBetrag - eingezahlterGesamtbetrag));
+            float d = zuZahlenderBetrag - eingezahlterGesamtbetrag;
+            System.out.printf( "%.2f\n" ,     d);
             System.out.print("Eingabe (mind. 5Ct, höchstens 2 Euro): ");
-            eingeworfeneMuenze = tastatur.nextDouble();
+            eingeworfeneMuenze = tastatur.nextFloat();
             eingezahlterGesamtbetrag += eingeworfeneMuenze;
         }
-
         // Fahrscheinausgabe
         // -----------------
         System.out.println("\nFahrschein wird ausgegeben");
@@ -55,30 +58,30 @@ class Fahrkartenautomat {
             System.out.println("Der Rückgabebetrag in Höhe von " + rueckgabebetrag + " EURO");
             System.out.println("wird in folgenden Münzen ausgezahlt:");
 
-            while (rueckgabebetrag >= 2.0) // 2 EURO-Münzen
+            while (rueckgabebetrag >= 2.00) // 2 EURO-Münzen
             {
                 System.out.println("2 Euro");
-                rueckgabebetrag -= 2.0;
+                rueckgabebetrag -= 2.00;
             }
-            while (rueckgabebetrag >= 1.0) // 1 EURO-Münzen
+            while (rueckgabebetrag >= 1.00) // 1 EURO-Münzen
             {
                 System.out.println("1 Euro");
-                rueckgabebetrag -= 1.0;
+                rueckgabebetrag -= 1.00;
             }
-            while (rueckgabebetrag >= 0.5) // 50 CENT-Münzen
+            while (rueckgabebetrag >= 0.50) // 50 CENT-Münzen
             {
                 System.out.println("50 Cent");
-                rueckgabebetrag -= 0.5;
+                rueckgabebetrag -= 0.50;
             }
-            while (rueckgabebetrag >= 0.2) // 20 CENT-Münzen
+            while (rueckgabebetrag >= 0.20) // 20 CENT-Münzen
             {
                 System.out.println("20 Cent");
-                rueckgabebetrag -= 0.2;
+                rueckgabebetrag -= 0.20;
             }
-            while (rueckgabebetrag >= 0.1) // 10 CENT-Münzen
+            while (rueckgabebetrag >= 0.10) // 10 CENT-Münzen
             {
                 System.out.println("10 Cent");
-                rueckgabebetrag -= 0.1;
+                rueckgabebetrag -= 0.10;
             }
             while (rueckgabebetrag >= 0.05)// 5 CENT-Münzen
             {
